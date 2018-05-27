@@ -25,6 +25,10 @@ for i in "${toRemove[@]}"; do
  apt-get -y purge --auto-remove $i
 done
 
+##needed for printer driver 
+sudo apt install gcc libtool libssl-dev libc-dev \
+libjpeg-turbo8-dev libpng12-dev libtiff5-dev cups
+
 
 echo mkdir ~/PhoyoLinux
 echo cd ~/PhoyoLinux
