@@ -9,7 +9,6 @@ declare -a toRemove=(
 'idle*'
 'scratch'
 'minecraft*'
-##'plank'
 'simple-scan'
 'youtube*'
 'hexchat'
@@ -19,7 +18,6 @@ declare -a toRemove=(
 'libreoffice'
 'atril*'
 'sonic-pi'
-##'sense_*'
 'vlc'
 )
 
@@ -28,10 +26,9 @@ for i in "${toRemove[@]}"; do
 done
 
 
-echo mkdir ~/Phoyo
-echo cd ~/Phoyo
-echo wget -P ~/Phoyo https://www.phoyosystem.com/custom/binaries/phoyo-id-crossPlatform.zip
-echo unzip ~/Phoyo/phoyo-id-crossPlatform.zip -d ./
-echo rm phoyo-id-crossPlatform.zip
-echo cd $(ls | grep phoyo)
-
+echo mkdir ~/PhoyoLinux
+echo cd ~/PhoyoLinux
+echo wget -P ~/PhoyoLinux https://www.phoyosystem.com/custom/binaries/PhoyoLinux.tar.gz
+echo tar xfz PhoyoLinux.tar.gz -C ~/PhoyoLinux
+echo rm PhoyoLinux.tar.gz
+echo ./PhoyoLinux
