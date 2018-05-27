@@ -1,11 +1,15 @@
 #!/bin/bash
 
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root"
+	exit
+fi
+
 declare -a toRemove=(
 'idle*'
-'py*'
 'scratch'
 'minecraft*'
-'plank'
+##'plank'
 'simple-scan'
 'youtube*'
 'hexchat'
@@ -15,16 +19,14 @@ declare -a toRemove=(
 'libreoffice'
 'atril*'
 'sonic-pi'
-'sense_*'
+##'sense_*'
 'vlc'
 )
 
 for i in "${toRemove[@]}"; do
- apt-get -y remove --purge $i
+ apt-get -y purge --auto-remove $i
 done
 
- apt-get -y autoremove
- apt-get -y install python3
 
 echo mkdir ~/Phoyo
 echo cd ~/Phoyo
