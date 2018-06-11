@@ -9,8 +9,8 @@ import time
 import logging
 import subprocess as sub
 
-preset = "4zu6"
-#preset = "streifen"
+#preset = "4zu6"
+preset = "streifen"
 #preset = "test"
 
 IMG1 = "first.jpg"
@@ -60,7 +60,7 @@ def scalePictures(fileName):
         
     elif preset == "streifen":
         xSnip, ySnip = (int(xSize/3),int(ySize/3))   
-        xOffset, yOffset = (0,0)
+        xOffset, yOffset = (0,60)
         basePhoto = Image.new('RGB',(xSize,ySize),"white")
         
         first = Image.open(IMG1)
@@ -71,13 +71,13 @@ def scalePictures(fileName):
         re2 = second.resize((xSnip, ySnip))
         re3 = third.resize((xSnip, ySnip))
         
-        basePhoto.paste(re3,(xSize-xSnip,0))
-        basePhoto.paste(re2,(xSize-2*xSnip+xOffset,0)) 
-        basePhoto.paste(re1,(0,0))
+        basePhoto.paste(re3,(xSize-xSnip,60))
+        basePhoto.paste(re2,(xSize-2*xSnip+xOffset,60)) 
+        basePhoto.paste(re1,(0,60))
         
-        basePhoto.paste(re3,(xSize-xSnip,ySize/2))
-        basePhoto.paste(re2,(xSize-2*xSnip+xOffset,ySize/2)) 
-        basePhoto.paste(re1,(0,ySize/2))
+        basePhoto.paste(re3,(xSize-xSnip,ySize/2+yOffset))
+        basePhoto.paste(re2,(xSize-2*xSnip+xOffset,ySize/2+yOffset)) 
+        basePhoto.paste(re1,(0,ySize/2+yOffset))
         basePhoto.save(fileName)
         
     else:
@@ -87,17 +87,7 @@ def scalePictures(fileName):
 #
 #merge pictures side by side
 #
-"""    
-def convertMergeImages(fileName):
-#   picam overlay
-#    addPreviewOverlay(150,200,55,"merging images...")
-    #now merge all the images
-    sub.call(["montage",
-                     IMG1,IMG2,IMG3,
-                     "-geometry", "+2+2",
-                     fileName])
-    logging.info("Images have been merged.")
-"""    
+   
 def deleteImages(fileName):
     logging.info("Deleting any old images.")
     if os.path.isfile(IMG1):
@@ -115,13 +105,12 @@ def takePicture(picName):
 
 
 
-"""
 def ablauf():
     #file will be named after time
     fileName = time.strftime("%Y%m%d-%H%M%S")+".jpg"    
     srcImg = pil.Image(IMG)
     dstImg = pil.Image.new(")
-   """     
+   
 
 if __name__== "__main__":
     pictureName = 'base.jpg'    
