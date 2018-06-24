@@ -11,9 +11,9 @@ import subprocess as sub
 preset = "streifen"
 #preset = "test"
 
-IMG1 = "first.jpg"
-IMG2 = "second.jpg"
-IMG3 = "third.jpg"
+IMG1 = "picture1.jpg"
+IMG2 = "picture2.jpg"
+IMG3 = "picture3.jpg"
 
 
 #########################################################################
@@ -85,9 +85,7 @@ def scalePictures(fileName):
        print('set preset correctly')
 
 
-#
-#merge pictures side by side
-#
+
    
 def deleteImages(fileName):
     logging.info("Deleting any old images.")
@@ -104,7 +102,13 @@ def takePicture(picName):
     pictureOptions = "gphoto2 --capture-and-download --filename " + picName + " --force-overwrite"
     p = sub.Popen(pictureOptions,stdout=sub.PIPE,stderr=sub.PIPE,shell=True)
 
-
+def picRoutine(filename):
+    for i in range(3):    
+        takePicture("picture"+str(i+1)+".jpg")
+    scalePictures(filename)
+    printPic(filename)
+    deleteImages(filename)
+    
 #########################################################################
 #               GUI                                                     #
 #########################################################################
@@ -140,13 +144,14 @@ class Page2(Page):
           
         
           
-     def Page2callback(e):
-          array=[1,2,3,4]
-          for i in array:
-              time.sleep(1)
-              img2 = ImageTk.PhotoImage(Image.open("./assets/count_"+str(i)+".jpg"))
-              Page2.label.configure(image=img2)
-              Page2.label.image = img2
+          def Page2callback(self):
+              for i in range(4,-1,-1):
+                  time.sleep(1)
+                  img2 = ImageTk.PhotoImage(Image.open("./assets/count_"+str(i)+".jpg"))
+                  label.configure(image=img2)
+                  label.image = img2
+                  
+          Page2callback(self)
 
                   
         
@@ -191,12 +196,14 @@ class MainView(tk.Frame):
         p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="Page 1", command=self.buttonCallback)
+        b1 = tk.Button(buttonframe, text="Next", command=self.buttonCallback)
           
         b1.pack(side="left")
 
         p1.show()
         self.pages.append(p1)
+        self.pages.append(p2)
+        self.pages.append(p3)
         self.pages.append(p2)
         self.pages.append(p3)
         self.pages.append(p4)
@@ -224,6 +231,7 @@ if __name__== "__main__":
     #app=FullScreenApp(root)
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
+    main.bind()
     #root.wm_geometry("800x800")
     
     root.mainloop()

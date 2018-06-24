@@ -97,7 +97,7 @@ class MainView(tk.Frame):
         p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="Page 1", command=self.buttonCallback)
+        b1 = tk.Button(buttonframe, text="Page 1", command=lambda: self.buttonCallback())
           
         b1.pack(side="left")
 
@@ -146,7 +146,7 @@ if __name__== "__main__":
   
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
-    main.bind("<Button-1>", main.buttonCallback)
+    main.bind("<Button-1>", lambda: main.buttonCallback())
     #root.wm_geometry("800x800")
     
     main.focus

@@ -20,31 +20,35 @@ class Page(tk.Frame):
 class Page1(Page):
      def __init__(self, *args, **kwargs):
             Page.__init__(self, *args, **kwargs)
-            pathStart="./assets/Startbild.jpg"
+                      
+            
+            pathStart="./assets/Startbild.jpg"          
             img = ImageTk.PhotoImage(Image.open(pathStart))
             label = tk.Label(self,image=img)
             label.image=img
             label.pack(side="left", fill="both", expand=True)
-
+             
 
 class Page2(Page):
      def __init__(self, *args, **kwargs):
           Page.__init__(self, *args, **kwargs)
+          
           pathStart = "./assets/count_1.jpg"
           img = ImageTk.PhotoImage(Image.open(pathStart))
           label = tk.Label(self,image=img) 
           label.image = img
           label.pack(side="left", fill="both", expand=True)
-          
-        
-          
-     def Page2callback(e):
+#          self.Page2callback()
+
+"""       
+     def Page2callback(self):
           array=[1,2,3,4]
           for i in array:
               time.sleep(1)
               img2 = ImageTk.PhotoImage(Image.open("./assets/count_"+str(i)+".jpg"))
-              Page2.label.configure(image=img2)
-              Page2.label.image = img2
+              self.label.configure(image=img2)
+              self.label.image = img2
+"""
 
                   
         
@@ -72,9 +76,13 @@ class Page4(Page):
 class MainView(tk.Frame):
     index = 1
     pages = []
+    
+    
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)    
         self.geometry = args[0].geometry  
+       
+        
         p1 = Page1(self)
         p2 = Page2(self)
         p3 = Page3(self)
@@ -119,10 +127,12 @@ if __name__== "__main__":
     root=tk.Toplevel()
     #Damit sparst dir die FullscreenApp Klasse
     root.attributes('-fullscreen',True)
+  
     #app=FullScreenApp(root)
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
     #root.wm_geometry("800x800")
+
     
     root.mainloop()
     
