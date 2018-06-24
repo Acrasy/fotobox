@@ -110,7 +110,7 @@ class MainView(tk.Frame):
         self.pages.append(p4)
         
       # self.after(1,lambda:self.focus_force())
-      # self.bind("<Button-1>", self.buttonCallback)
+        p1.bind("<Button-1>", self.buttonCallback)
 
         
         #f1.master.place(in_=objectframe,x=200,y=0,relwidth=1,relheight=1)
@@ -146,7 +146,7 @@ if __name__== "__main__":
   
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
-    main.bind("<Button-1>", lambda: main.buttonCallback())
+    
     #root.wm_geometry("800x800")
     
     main.focus

@@ -13,9 +13,9 @@ import subprocess as sub
 preset = "streifen"
 #preset = "test"
 
-IMG1 = "first.jpg"
-IMG2 = "second.jpg"
-IMG3 = "third.jpg"
+IMG1 = "IMG1.jpg"
+IMG2 = "IMG2.jpg"
+IMG3 = "IMG3.jpg"
 
 #CurrentWorkingDir= os.getcwd() + "/fotos"
 
@@ -104,6 +104,14 @@ def takePicture(picName):
     p = sub.Popen(pictureOptions,stdout=sub.PIPE,stderr=sub.PIPE,shell=True)
 
 
+##more for documenting purposes, the logic should be impleneted with the gui
+def routine(fileName):
+    for i in range(3): 
+        takePicture("IMG"+str(i+1)+".jpg")
+    scalePictures(fileName)
+    printPic(fileName)
+    time.sleep(5)
+    deleteImages(fileName)
 """
 def ablauf():
     #file will be named after time

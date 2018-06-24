@@ -206,6 +206,8 @@ class MainView(tk.Frame):
         self.pages.append(p3)
         self.pages.append(p2)
         self.pages.append(p3)
+        self.pages.append(p2)
+        self.pages.append(p3)
         self.pages.append(p4)
 
         
@@ -235,3 +237,5 @@ if __name__== "__main__":
     #root.wm_geometry("800x800")
     
     root.mainloop()
+    
+
