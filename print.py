@@ -13,9 +13,9 @@ import subprocess as sub
 preset = "streifen"
 #preset = "test"
 
-IMG1 = "IMG1.jpg"
-IMG2 = "IMG2.jpg"
-IMG3 = "IMG3.jpg"
+IMG1 = "./fotos/IMG1.jpg"
+IMG2 = "./fotos/IMG2.jpg"
+IMG3 = "./fotos/IMG3.jpg"
 
 #CurrentWorkingDir= os.getcwd() + "/fotos"
 
