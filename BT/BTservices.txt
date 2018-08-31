@@ -1,0 +1,12 @@
+<class 'list'>
+Devices found: 1
+('30:AE:A4:18:16:FA', 'ESP32')
+name: None
+port: 31
+host: 30:AE:A4:18:16:FA
+name: None
+port: 31
+host: 30:AE:A4:18:16:FA
+name: ESP32_SPP_SERVER
+port: 2
+host: 30:AE:A4:18:16:FA
