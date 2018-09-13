@@ -165,7 +165,7 @@ def deleteImages(fileName):
 def overlayImage(imagePath, duration = 0, layer = 3, mode = 'RGB'):
     """
     Add an overlay (and sleep for optional duration).
-    If sleep duration ios not supplied then overlay will need to be removed later.
+    If sleep duration is not supplied then overlay will need to be removed later.
     This functions returns an overlay ID, which can be used to removeOverlay(id)
     """
 
